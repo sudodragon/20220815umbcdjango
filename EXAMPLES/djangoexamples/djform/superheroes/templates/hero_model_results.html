@@ -1,0 +1,17 @@
+{% extends "superheroes_base.html" %}
+
+{% block content %}
+
+
+<h1>Added</h1>
+<h2>{{ name }}</h2>
+<h2>Secret Identity: {{ secret_identity }}</h2>
+<h2>Real Name: {{ real_name }}</h2>
+<hr/>
+<h1>All heroes</h1>
+{% for hero in heroes %}
+{{ hero.name }} <br/>
+{% endfor %}
+
+{% endblock %}
+

@@ -1,0 +1,9 @@
+{% extends "superheroes_base.html" %}
+{% block content %}
+<div class="container">
+{% for hero in heroes %}
+    {{ hero.name }}<br/>
+{% endfor %}
+</div>
+{% endblock content %}
+
