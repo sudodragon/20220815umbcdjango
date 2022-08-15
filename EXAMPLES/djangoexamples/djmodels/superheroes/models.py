@@ -29,6 +29,6 @@ class Superhero(models.Model):
     enemies = models.ManyToManyField(Enemy)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} [{self.secret_identity}]"
 
 
