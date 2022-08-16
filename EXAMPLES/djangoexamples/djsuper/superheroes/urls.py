@@ -12,7 +12,11 @@ app_name = 'superheroes'
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('herox/<int:hero_num>/', views.hero_int, name="hero_int"),
+    path('herox/<str:hero_text>/', views.hero_str, name="hero_str"),
     path('hero/<str:hero_name>/', views.hero, name="hero"),
+  #  path('hero/<int:hero_num>/', views.hero, name="hero_num"),
+
     path('hero404/<str:hero_name>/', views404.hero404, name="hero404"),
     path('hero404sc/<str:hero_name>/', views404.hero404sc, name="hero404sc"),
     path(

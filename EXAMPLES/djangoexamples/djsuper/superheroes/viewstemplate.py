@@ -27,7 +27,7 @@ def hero_easy_way(request, hero_name):
         'real_name': hero.real_name,
         'secret_identity': hero.secret_identity,
     }
-    return render(request, 'superheroes/hero_basic.html', data)
+    return render(request, 'superheroes/hero_basic.html', context=data)
 
 def hero_lookups(request, hero_name):
     hero =  get_object_or_404(Superhero, name=hero_name)

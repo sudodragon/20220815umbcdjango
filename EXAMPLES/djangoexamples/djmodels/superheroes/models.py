@@ -8,6 +8,7 @@ class Power(models.Model):
         return self.name
 
 class City(models.Model):
+    # id = ...
     name = models.CharField(max_length=32, unique=True)
 
     def __str__(self):

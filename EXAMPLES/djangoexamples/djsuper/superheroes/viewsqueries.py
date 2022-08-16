@@ -8,6 +8,7 @@ q_woman = Q(name__icontains="woman")
 def hero_queries(request):
 
     queries = [
+        #  Model.manager.method()
         'Superhero.objects.all()',
         'Superhero.objects.filter(name="Superman")',
         'Superhero.objects.filter(name="Superman").first()',
