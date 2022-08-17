@@ -13,6 +13,7 @@ def home(request):
 
 class BaseHomeView(TemplateView):
     template_name = 'superheroes/home.html'
+    data = {}
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -26,6 +27,7 @@ class OtherView(BaseHomeView):
     data = {'message': "This is the other view"}
 
 class HeroListView(ListView):
+    # template is superhero_list.html
     model = Superhero
 
 class HeroDetailView(DetailView):
@@ -36,7 +38,6 @@ class HeroListViewPlus(ListView):
     context_object_name = 'heroes'
     template_name = 'superheroes/superhero_list_plus.html'
     # queryset = Superhero.objects.filter(powers__name__icontains="fly")
-
 
 class HeroDetailViewPlus(DetailView):
     model = Superhero
@@ -61,7 +62,7 @@ class HeroUpdateView(UpdateView):
 
 class HeroDeleteView(DeleteView):
     model = Superhero
-    success_url = "/"
+    success_url = reverse_lazy('superheroes:home')
 #    success_url = reverse_lazy('superheroes:success')
 
 class SuccessView(TemplateView):

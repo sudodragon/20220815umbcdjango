@@ -1,0 +1,20 @@
+
+
+To make a page appear on your web site
+
+0. Define one or more models
+
+1. in app/templates/app/mytemplate.html  define fields you want to display from your models as well as other data
+   ** if using class view and not specifying template name, template name must be according to predefined rules
+
+2. in app/views.py  define a view function (OR a view class) that uses mytemplate.html and provides context data for it.
+    View function gets data from models as needed
+
+    ** some predefined classes automatically get data from models
+    ** some predefined classes automatically select templates based on the model name
+
+3. in app/urls.py  define a path() which is the actual part of the URL you want to go to the page; this path uses either
+    view_function OR ViewClass.as_view()
+
+
+

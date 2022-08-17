@@ -8,7 +8,7 @@ class LittleIntegerField(forms.IntegerField):
 
 
 class DemoForm(forms.Form):
-    demo_boolean = forms.BooleanField()
+    demo_boolean = forms.BooleanField(label="Check if you love Python")
     demo_char = forms.CharField(max_length=10, strip=True)
     demo_choice = forms.ChoiceField(choices=[(1, 'A'), (2, 'B'), (3, 'C')])
     demo_date = forms.DateField(label="Date")
@@ -23,7 +23,19 @@ class DemoForm(forms.Form):
     def clean_demo_boolean(self):
         bool = self.cleaned_data['demo_boolean']
 #        raise forms.ValidationError("That is an invalid Boolean")
-        return  not boolclass
+        return not bool
+
+    def clean_demo_choice(self):
+        choice = self.cleaned_data['demo_choice']
+        value = "NONE"
+        if choice == "1":
+            value = "apple"
+        elif choice == "2":
+            value = "banana"
+        elif choice == "3":
+            value = "cherry"
+
+        return value
 
 
 COLORS = 'green red blue purple orange'.split()
@@ -32,15 +44,21 @@ COLOR_CHOICES = [(c.title(), c) for c in COLORS]
 
 class HeroForm(forms.Form):
 
-    hero_name = forms.CharField(label='Hero', max_length=40)
+    hero_name = forms.CharField(
+        label='Hero',
+        max_length=40,
+        # help_text="Hero name",
+        widget=forms.TextInput(attrs={'placeholder': 'Hero name'})
+    )
     hero_color = forms.ChoiceField(
         label="Color",
         choices=COLOR_CHOICES,
+        help_text="Color for hero name"
     )
 
 
 class HeroModel(forms.ModelForm):
-    class Meta():
+    class Meta:
         model = Superhero
         fields = ['name', 'real_name', 'city', 'secret_identity']
         labels = {

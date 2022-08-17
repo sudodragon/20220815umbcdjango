@@ -5,6 +5,7 @@
 <h1>{{ object.name }}</h1>
 <h2>Secret Identity: {{ object.secret_identity }}</h2>
 <h2>Real Name: {{ object.real_name }}</h2>
+<h2>City: {{ object.city.name }}</h2>
 <h3>Powers: {{ object.powers.all | join:", "}}</h3>
 <h3>Enemies: {{ object.enemies.all | join:", " }}</h3>
 

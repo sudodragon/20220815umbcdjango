@@ -6,6 +6,8 @@ from django.views.generic import TemplateView
 from . import views
 from .models import Superhero
 
+app_name = "superheroes"
+
 urlpatterns = [
     # welcome page using template view
     path(
@@ -16,6 +18,7 @@ urlpatterns = [
 
     path('other', views.OtherView.as_view(), name='other'),
     # NO view -- don't do this:
+
     path(
         'noview',
         TemplateView.as_view(template_name='superheroes/generic_only.html'),

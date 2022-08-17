@@ -29,7 +29,7 @@ def demoform(request):
     """
     invalid = False
 
-    if request.method == 'POST':
+    if request.method == 'POST':  # form is bound (i.e., filled-in)
         form = DemoForm(request.POST)
         if form.is_valid():
             # if data is valid, show results page
@@ -97,7 +97,7 @@ def heroadd(request):
     if request.method == 'POST':
         form = HeroModel(request.POST)
         if form.is_valid():
-            form.save()
+            form.save()  # write data to DB automagically
             context = {
                 'page_title': 'Hero Details',
                 'name': form.cleaned_data['name'],

@@ -13,7 +13,8 @@ def home(request):
     elif request.method == 'PUT':
         pass
     # etc etc
-    return HttpResponse("Welcome to the superhero app "  + request.method  )
+    # s = Superhero.objects.get(name="Blankman")
+    return HttpResponse("Welcome to the superhero app "  + request.method )
 
 def hero(request, hero_name):
     """
