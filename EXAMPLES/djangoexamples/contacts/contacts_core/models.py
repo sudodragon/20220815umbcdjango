@@ -10,7 +10,7 @@ class City(models.Model):
 
     class Meta:
         db_table = 'cities'
-        verbose_name_plural = 'cities'
+        verbose_name_plural = 'cities'   # prevent "citys" in admin
 
     def __str__(self):
         return f"{self.name}, {self.admindiv}"

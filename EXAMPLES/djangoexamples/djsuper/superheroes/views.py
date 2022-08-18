@@ -33,3 +33,12 @@ def hero_int(request, hero_num):
     return HttpResponse("hero_int view " + str(hero_num * 2))
 def hero_str(request, hero_text):
     return HttpResponse("hero_str view: " + hero_text)
+
+def wombat(request, wombat_id):
+    pass
+
+def wombat_list(request):
+    pass
+
+
+
