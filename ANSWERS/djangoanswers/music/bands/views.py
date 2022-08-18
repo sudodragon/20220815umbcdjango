@@ -1,48 +1,90 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import CreateView, ListView, DetailView, UpdateView
+from django.urls import reverse
+from .models import Band, Genre, Album, Artist, BandMember
 
-from .models import Band, Genre
-
-
+# home page
 def home(request):
-    return HttpResponse("Welcome to the Bands app")
+    context = {'message': "Welcome to the Bands app"}
+    return render(request, 'bands/home.html', context)
+
+def create(request):
+    return render(request, 'bands/create.html')
+
+def success(request):
+    return render(request, 'bands/success.html')
+
+# band pages
+class BandList(ListView):
+    model = Band
+
+class BandDetails(DetailView):
+    model = Band
+
+class CreateBase(CreateView):
+    template_name = "bands/common_form.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update(self.data)
+        return context
+
+    def get_success_url(self, **kwargs):
+        model_name = self.model.__name__.lower()
+        # return reverse(f'bands:{model_name}create')
+        return reverse('bands:success')
+
+class BandCreate(CreateBase):
+    model = Band
+    data = {"heading": "Add a Band"}
+    fields = ['name', 'genre', 'members']
 
 
-def band_basic(request, band_name):
-    band = Band.objects.get(name=band_name)
-    data = {'band': band}
-    return render(request, 'bands/band_basic.html', data)
+# album pages
+class AlbumList(ListView):
+    model = Album
 
+class AlbumDetails(DetailView):
+    model = Album
 
-def bands_list(request):
-    bands = Band.objects.all()
-    data = {'bands': bands, 'title': 'Bands'}
-    return render(request, 'bands/bands_list.html', data)
+class AlbumCreate(CreateBase):
+    model = Album
+    data = {"heading": "Create an album"}
+    fields = ['album_name', 'release_year', 'band']
 
-def bands_sorted(request):
-    bands = Band.objects.all().order_by('name')
-    data = {'bands': bands, 'title': 'Bands'}
-    return render(request, 'bands/bands_list.html', data)
+# artist pages
+class ArtistList(ListView):
+    model = Artist
 
-def band_details(request, pk):
-    band = Band.objects.get(pk=pk)
-    data = {'band': band}
-    return render(request, 'bands/band_details.html', data)
+class ArtistDetails(DetailView):
+    model = Artist
 
+class ArtistCreate(CreateBase):
+    model = Artist
+    data = {"heading": "Create an artist"}
+    fields = ['name']
 
-def bands_by_genre(request, genre_name):
-    bands = Band.objects.filter(genre__name__icontains=genre_name)
-    data = {'genre': genre_name, 'bands': bands, 'title': 'Bands'}
-    return render(request, 'bands/bands_list.html', data)
+# bandmember pages
+class BandMemberList(ListView):
+    model = BandMember
 
+class BandMemberDetails(DetailView):
+    model = BandMember
 
-def bands_search(request, search_term):
-    bands = Band.objects.all().filter(name__icontains=search_term)
-    data = {'bands': bands, 'title': 'Bands'}
-    return render(request, 'bands/bands_list.html', data)
+class BandMemberCreate(CreateBase):
+    model = BandMember
+    data = {"heading": "Create a band member"}
+    fields = ['member', 'is_current_or_last', 'band']
 
-# chapter 9
-def bands_list_more(request):
-    bands = Band.objects.all()
-    data = {'bands': bands, 'title': 'Bands'}
-    return render(request, 'bands/bands_list_more.html', data)
+# genre pages
+class GenreList(ListView):
+    model = Genre
+
+class GenreDetails(DetailView):
+    model = Genre
+
+class GenreCreate(CreateBase):
+    model = Genre
+    data = {"heading": "Create a genre"}
+    fields = ['name']

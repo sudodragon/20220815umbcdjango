@@ -28,9 +28,12 @@ class OtherView(BaseHomeView):
 
 class HeroListView(ListView):
     # template is superhero_list.html
+    # context object is object_list
     model = Superhero
 
 class HeroDetailView(DetailView):
+    # template is superhero_detail.html
+    # context object is object
     model = Superhero
 
 class HeroListViewPlus(ListView):

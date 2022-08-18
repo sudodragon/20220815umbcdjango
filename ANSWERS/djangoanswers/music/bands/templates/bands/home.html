@@ -1,0 +1,23 @@
+{% extends "bands/bands_base.html" %}
+{% block css %}
+{{ block.super }}
+<style>div a{ display: block; }</style>
+{% endblock css %}
+{% block content %}
+<div class="container">
+    <h1>{{ message }}</h1>
+    <div>
+        <h3><a href="{% url 'bands:bandlist' %}">List bands</a></h3>
+        <h3><a href="{% url 'bands:albumlist' %}">List albums</a></h3>
+        <h3><a href="{% url 'bands:artistlist' %}">List artists</a></h3>
+        <h3><a href="{% url 'bands:genrelist' %}">List genres</a></h3>
+        <hr/>
+
+        <hr/>
+        <h3><a href="{% url 'bands:create' %}">Add new data</a></h3>
+    </div>
+</div>
+{% endblock content %}
+{% block footer %}{% endblock footer %}
+
+

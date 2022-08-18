@@ -2,23 +2,42 @@
 URL Configuration for bands
 """
 from django.urls import path
-from . import views   # import views from app
-from . import classviews
+from . import views
 
 app_name = "bands"
 
 urlpatterns = [
-    # add url patterns for the bands app here
-
-    # Example:
+    # home route
     path('', views.home, name='home'),
-    path('sorted', views.bands_sorted, name='sorted'),
-    path('list', views.bands_list, name='list'),
-    path('listmore', views.bands_list_more, name='listmore'),
-    path('genre/<str:genre_name>', views.bands_by_genre, name='genre'),
-    path('search/<str:search_term>', views.bands_search, name='search'),
-    path('<int:pk>', views.band_details, name='band_details'),
-    path('<str:band_name>', views.band_basic, name='basic'),
-    path('classlist', classviews.BandListView.as_view(), name='classlist'),
-    path('class/<int:pk>', classviews.BandDetailView.as_view(), name='classdetails'),
+
+    # create route
+    path('create', views.create, name='create'),
+
+    # success route
+    path('success', views.success, name='success'),
+
+    # band urls
+    path('bands', views.BandList.as_view(), name="bandlist"),
+    path('band/<int:pk>', views.BandDetails.as_view(), name="banddetails"),
+    path('bands/add', views.BandCreate.as_view(), name="bandcreate"),
+    
+    # album urls
+    path('albums', views.AlbumList.as_view(), name="albumlist"),
+    path('album/<int:pk>', views.AlbumDetails.as_view(), name="albumdetails"),
+    path('albums/add', views.AlbumCreate.as_view(), name="albumcreate"),
+
+    # artist urls
+    path('artists', views.ArtistList.as_view(), name="artistlist"),
+    path('artist/<int:pk>', views.ArtistDetails.as_view(), name="artistdetails"),
+    path('artist/add', views.ArtistCreate.as_view(), name="artistcreate"),
+
+    # bandmember urls
+    path('bandmembers', views.BandMemberList.as_view(), name="bandmemberlist"),
+    path('bandmember/<int:pk>', views.BandMemberDetails.as_view(), name="bandmemberdetails"),
+    path('bandmember/add', views.BandMemberCreate.as_view(), name="bandmembercreate"),
+
+    # genre urls
+    path('genres', views.GenreList.as_view(), name="genrelist"),
+    path('genre/<int:pk>', views.GenreDetails.as_view(), name="genredetails"),
+    path('genres/add', views.GenreCreate.as_view(), name="genrecreate"),
 ]

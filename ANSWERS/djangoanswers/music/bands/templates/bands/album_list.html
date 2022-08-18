@@ -1,26 +1,20 @@
 {% extends "bands/bands_base.html" %}
 
 {% block title %}
-
-    {% if genre %}
-        {{ genre.name }}
-    {% endif %}
-
-    {{ title }}
-
+ {{ title }}
 {% endblock title %}
 
 {% block content %}
 
-<h1>Pick a Band:</h1>
+<h1>Albums</h1>
 
-{% for band in bands %}
+{% for album in object_list %}
 <div class="row">
     <div class="col-3">
-    <a href="{% url 'bands:band_details' band.id  %}">{{ band.name }}</a>
+    <a href="{% url 'bands:albumdetails' album.pk  %}">{{ album.album_name }}</a>
     </div>
     <div class="col-3">
-    {{ band.get_genre }}
+    <a href="{% url 'bands:banddetails' album.band.pk %}">{{ album.band }}</a>
     </div>
 </div>
 {% endfor %}

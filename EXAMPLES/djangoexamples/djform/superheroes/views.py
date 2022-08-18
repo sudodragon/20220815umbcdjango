@@ -103,7 +103,8 @@ def heroadd(request):
                 'name': form.cleaned_data['name'],
                 'secret_identity': form.cleaned_data['secret_identity'],
                 'real_name': form.cleaned_data['real_name'],
-                'heroes': Superhero.objects.all()
+                'heroes': Superhero.objects.all(),
+                'color': request.session.get('color'),
             }
             return render(request, 'hero_model_results.html', context)
     else:

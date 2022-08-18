@@ -1,0 +1,20 @@
+{% extends "bands/bands_base.html" %}
+
+{% block title %}
+ {{ title }}
+{% endblock title %}
+
+{% block content %}
+
+<h1>Genres</h1>
+
+{% for genre in object_list %}
+<div class="row">
+    <a href="{% url 'bands:genredetails' genre.pk  %}">{{ genre.name }}</a>
+</div>
+{% endfor %}
+
+{% endblock %}
+
+</body>
+</html>

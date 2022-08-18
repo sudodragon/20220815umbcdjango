@@ -1,0 +1,22 @@
+{% extends "bands/bands_base.html" %}
+
+{% block content %}
+
+<h1>{{ object.name }}</h1>
+<h4>Genre: {{ object.genre }}</h4>
+<h2>Members:</h2>
+<ul>
+{% for member in object.members.all %}
+<li>{{ member.name }}</li>
+{% endfor %}
+</ul>
+
+<h3>Albums:</h3>
+<ul>
+{% for album in object.album_set.all %}
+<li><a href="{% url 'bands:albumdetails' album.pk %}">{{ album.album_name }}</a></li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'bands:bandlist' %}">Return to band list</a>
+{% endblock %}

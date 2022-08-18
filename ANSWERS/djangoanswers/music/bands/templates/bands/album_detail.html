@@ -1,0 +1,10 @@
+{% extends "bands/bands_base.html" %}
+
+{% block content %}
+
+<h1>{{ object.album_name }} ({{ object.release_year }})</h1>
+<h2>{{ object.band.name }}</h2>
+
+<a href="{% url 'bands:albumlist' %}">Return to album list</a>
+
+{% endblock %}

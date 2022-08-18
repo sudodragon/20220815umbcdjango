@@ -1,0 +1,16 @@
+{% extends "bands/bands_base.html" %}
+{% block content %}
+<div class="container">
+<h1>{{ heading }}</h1>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit"/>
+</form>
+</div>
+<br/>
+<div>
+<h4><a href="{% url 'bands:create' %}">Back to create page</a></h4>
+</div>
+{% endblock content %}
+

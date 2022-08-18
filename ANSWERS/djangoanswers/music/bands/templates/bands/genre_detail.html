@@ -1,0 +1,9 @@
+{% extends "bands/bands_base.html" %}
+
+{% block content %}
+
+<h1>{{ object.name }}</h1>
+
+<a href="{% url 'bands:genrelist' %}">Return to genre list</a>
+
+{% endblock %}
