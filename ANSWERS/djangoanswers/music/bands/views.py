@@ -24,6 +24,7 @@ class BandDetails(DetailView):
 
 class CreateBase(CreateView):
     template_name = "bands/common_form.html"
+    data = ""
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -31,13 +32,13 @@ class CreateBase(CreateView):
         return context
 
     def get_success_url(self, **kwargs):
-        model_name = self.model.__name__.lower()
+        # model_name = self.model.__name__.lower()
         # return reverse(f'bands:{model_name}create')
         return reverse('bands:success')
 
 class BandCreate(CreateBase):
     model = Band
-    data = {"heading": "Add a Band"}
+    data = {"heading": "Add a Band", "submit_label": "add band"}
     fields = ['name', 'genre', 'members']
 
 
@@ -50,7 +51,7 @@ class AlbumDetails(DetailView):
 
 class AlbumCreate(CreateBase):
     model = Album
-    data = {"heading": "Create an album"}
+    data = {"heading": "Create an album", "submit_label": "create album"}
     fields = ['album_name', 'release_year', 'band']
 
 # artist pages
@@ -62,7 +63,7 @@ class ArtistDetails(DetailView):
 
 class ArtistCreate(CreateBase):
     model = Artist
-    data = {"heading": "Create an artist"}
+    data = {"heading": "Create an artist", "submit_label": "create artist"}
     fields = ['name']
 
 # bandmember pages
@@ -74,7 +75,7 @@ class BandMemberDetails(DetailView):
 
 class BandMemberCreate(CreateBase):
     model = BandMember
-    data = {"heading": "Create a band member"}
+    data = {"heading": "Create a band member", "submit_label":  "create band member"}
     fields = ['member', 'is_current_or_last', 'band']
 
 # genre pages
@@ -86,5 +87,5 @@ class GenreDetails(DetailView):
 
 class GenreCreate(CreateBase):
     model = Genre
-    data = {"heading": "Create a genre"}
+    data = {"heading": "Create a genre", "submit_label": "create genre"}
     fields = ['name']
