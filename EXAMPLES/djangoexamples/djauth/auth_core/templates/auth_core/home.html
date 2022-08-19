@@ -8,6 +8,8 @@
     {% else %}
     <h4><a href="{% url 'login' %}">log in</a></h4>
     {% endif %}
+    <h2><a href = "{% url 'auth_core:good' %}">Go to the good stuff...</a></h2>
+    <h2><a href = "{% url 'auth_core:other' %}">Go to the other stuff...</a></h2>
 
 </div>
 {% endblock content %}

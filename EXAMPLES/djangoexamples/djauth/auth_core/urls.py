@@ -12,5 +12,7 @@ urlpatterns = [
     # Examples:
     # path('', views.home, name='home'),
     # path('thing', views.thing, name='thing'),
-    path('', views.home, name='home')
+    path('', views.home, name='home'),
+    path('good', views.good, name='good'),
+    path('other', views.OtherView.as_view(), name='other')
 ]

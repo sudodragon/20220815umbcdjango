@@ -79,7 +79,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "templates")],  # add any other template dirs here
-        'APP_DIRS': True,  # templates are in APPNAME/templates
+        'APP_DIRS': True,  # templates are in APPNAME/templates/APPNAME
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -145,6 +145,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
-LOGIN_REDIRECT_URL = "/"   # go to home page after login
-LOGOUT_REDIRECT_URL = "/"   # go to home page after logout
+LOGIN_REDIRECT_URL = "auth_core:home"   # go to home page after login
+LOGOUT_REDIRECT_URL = "auth_core:home"   # go to home page after logout
 
