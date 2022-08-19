@@ -1,0 +1,14 @@
+{% extends "auth_core/auth_core_base.html" %}
+{% block content %}
+<div class="container">
+<h1>Welcome to Django Auth App</h1>
+    <h2>{{ message }}</h2>
+    {% if user.is_authenticated %}
+    <h4><a href="{% url 'logout' %}">log out</a></h4>
+    {% else %}
+    <h4><a href="{% url 'login' %}">log in</a></h4>
+    {% endif %}
+
+</div>
+{% endblock content %}
+

@@ -12,4 +12,5 @@ urlpatterns = [
     # Examples:
     # path('', views.home, name='home'),
     # path('thing', views.thing, name='thing'),
+    path('', views.home, name='home')
 ]

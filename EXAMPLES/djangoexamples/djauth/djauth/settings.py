@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'auth_core.apps.AuthCoreConfig',
     # add your apps here:
     # 'myapp.apps.MyappConfig',
     # 'myotherapp.apps.MyappConfig',
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 # add the Django Debug Toolbar if DEBUG is True
 if DEBUG:
@@ -76,7 +78,7 @@ ROOT_URLCONF = 'djauth.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],  # add any other template dirs here
+        'DIRS': [os.path.join(BASE_DIR, "templates")],  # add any other template dirs here
         'APP_DIRS': True,  # templates are in APPNAME/templates
         'OPTIONS': {
             'context_processors': [
@@ -142,3 +144,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
+LOGIN_REDIRECT_URL = "/"   # go to home page after login
+LOGOUT_REDIRECT_URL = "/"   # go to home page after logout
+

@@ -31,6 +31,8 @@ from django.contrib import admin
 # site-wide route mapping
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/', include('django.contrib.auth.urls')),
+    path('', include('auth_core.urls', namespace="auth_core")),
     # To include urls from an app:
     #
     # path('', include('app.urls', namespace="appname")),  # delegate to app's URL config
