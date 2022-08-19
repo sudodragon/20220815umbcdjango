@@ -23,8 +23,8 @@ def contacts(request):
 
 @api_view(['GET'])
 def contacts_detail(request, pk):
-     contacts = Contact.objects.filter(id=pk)
-     serializer = ContactSerializerPlain(contacts)
-     contacts_json = JSONRenderer().render(serializer.data)
-     return Response(contacts_json, 200)
+     contact = Contact.objects.filter(id=pk)
+     serializer = ContactSerializerPlain(contact)
+     contact_json = JSONRenderer().render(serializer.data)
+     return Response(contact_json, 200)
 

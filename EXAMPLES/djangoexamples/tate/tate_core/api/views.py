@@ -55,6 +55,12 @@ class ArtworksList(generics.ListCreateAPIView):
     filter_backends = [DjangoFilterBackend]
     filterset_class = ArtworkFilter
 
+class ArtworksDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Artwork.objects.all()
+    serializer_class = ArtworkSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ArtworkFilter
+
 
 class ArtistsDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Artwork.objects.all()

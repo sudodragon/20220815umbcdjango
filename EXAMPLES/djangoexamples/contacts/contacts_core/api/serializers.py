@@ -36,4 +36,9 @@ class ContactSerializer(serializers.ModelSerializer):
         model = Contact
         fields = ('id', 'first_name', 'last_name', 'street_address', 'city', 'postcode', 'dob')
 
+    def create(self, data):
+        #  look up city and add to record here...
+        pass
 
+    def save(self):
+        pass

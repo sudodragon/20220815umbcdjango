@@ -96,7 +96,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'contacts.wsgi.application'
-
+APPEND_SLASH=False
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
